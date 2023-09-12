@@ -1,5 +1,5 @@
 - 👋 Hi, I’m @Hann
-- 👀 I’m interested in photography, coding and video games 
+- 👀 I’m interested in web design, coding and video games 
 - 🌱 I’m currently learning learning code i.e javaScrip
 - 💞️ I’m looking to collaborate on anything easy for nooby whos only been learning code for about 2 weeks 
 - 📫 How to reach me - hann1693 (Discord) 
