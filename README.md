@@ -1,12 +1,10 @@
 # Hi there! I'm Hann0g 👋
 
 <div align="center">
-font=JetBrains+Mono&weight=500&size=24&pause=1000&color=4ECDC4&center=true&vCenter=true&width=600&lines=printf(%22Hello%2C+World!+%E3%82%88%E3%81%86%E3%81%93%E3%81%9D%22)%3B;Code+Craftsman+%E2%80%A2+Linux+Enthusiast;Coffee+Artist+%E2%80%A2+Anime+Lover" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=500&size=24&pause=1000&color=4ECDC4&center=true&vCenter=true&width=600&lines=printf(%22Hello%2C+World!+%E3%82%88%E3%81%86%E3%81%93%E3%81%9D%22)%3B;Code+Craftsman+%E2%80%A2+Linux+Enthusiast;Coffee+Artist+%E2%80%A2+Anime+Lover" alt="Typing SVG" />
 </div>
 
-<div align="center">
-  <img width="150" src="your-anime-avatar.jpg" alt="Hann0g's Avatar" style="border-radius: 50%; border: 3px solid #4ecdc4;"/>
-</div>
+
 
 <div align="center">
   <h3>🐧 BTW, I use Arch | ☕ Coffee Artist | 🌸 Japanese Culture Enthusiast</h3>
