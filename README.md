@@ -1,7 +1,7 @@
 # Hi there! I'm Hann0g 👋
 
 <div align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=500&size=24&pause=1000&color=4ECDC4&center=true&vCenter=true&width=600&lines=printf(%22Hello%2C+World!+%E3%82%88%E3%81%86%E3%81%93%E3%81%9D%22)%3B;Code+Craftsman+%E2%80%A2+Linux+Enthusiast;Coffee+Artist+%E2%80%A2+Anime+Lover" alt="Typing SVG" />
+font=JetBrains+Mono&weight=500&size=24&pause=1000&color=4ECDC4&center=true&vCenter=true&width=600&lines=printf(%22Hello%2C+World!+%E3%82%88%E3%81%86%E3%81%93%E3%81%9D%22)%3B;Code+Craftsman+%E2%80%A2+Linux+Enthusiast;Coffee+Artist+%E2%80%A2+Anime+Lover" alt="Typing SVG" />
 </div>
 
 <div align="center">
