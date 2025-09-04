@@ -7,7 +7,7 @@
 
 
 <div align="center">
-  <h3>🐧 BTW, I use Arch | ☕ Coffee Artist | 🌸 Japanese Culture Enthusiast</h3>
+  <h3>🐧 BTW, I use Arch | ☕ coffee Enthusiast | 🌸 Japanese Culture Enthusiast</h3>
 </div>
 
 ---
