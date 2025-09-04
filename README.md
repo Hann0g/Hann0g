@@ -56,10 +56,10 @@ user@arch:~$ neofetch
 **Tech Stack:**
 ```bash
 OS          : Arch Linux
-WM          : i3wm / Sway
+WM          : Hyprland
 Terminal    : Alacritty
-Shell       : Zsh + Oh My Zsh
-Editor      : Vim / Neovim
+Shell       : Bash
+Editor      : Neovim
 ```
 
 <div align="center">
