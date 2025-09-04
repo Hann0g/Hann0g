@@ -72,7 +72,7 @@ Editor      : Neovim
 ```
 🎨 Crafting perfect espresso shots
 ☕ Latte art precision
-⚗️  Coffee science enthusiast  
+⚗️ Coffee science enthusiast  
 🏪 The art of hospitality
 ```
 
