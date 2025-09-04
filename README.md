@@ -1,458 +1,198 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub Profile Bio</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap');
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'JetBrains Mono', monospace;
-            background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #21262d 100%);
-            color: #f0f6fc;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-        
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 2rem;
-            position: relative;
-        }
-        
-        .header {
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-        
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-            margin: 0 auto 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        .name {
-            font-size: 2.5rem;
-            font-weight: 700;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.5rem;
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-        
-        @keyframes glow {
-            from { filter: drop-shadow(0 0 5px rgba(255, 107, 107, 0.3)); }
-            to { filter: drop-shadow(0 0 20px rgba(78, 205, 196, 0.5)); }
-        }
-        
-        .title {
-            font-size: 1.2rem;
-            color: #8b949e;
-            margin-bottom: 1rem;
-        }
-        
-        .typing-text {
-            font-size: 1rem;
-            color: #4ecdc4;
-            border-right: 2px solid #4ecdc4;
-            padding-right: 5px;
-            animation: typing 4s steps(40, end) infinite, blink-caret 1s step-end infinite;
-            white-space: nowrap;
-            overflow: hidden;
-        }
-        
-        @keyframes typing {
-            0% { width: 0; }
-            50% { width: 100%; }
-            100% { width: 0; }
-        }
-        
-        @keyframes blink-caret {
-            0%, 50% { border-color: transparent; }
-            51%, 100% { border-color: #4ecdc4; }
-        }
-        
-        .interests-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-        
-        .interest-card {
-            background: rgba(33, 38, 45, 0.8);
-            border: 1px solid #30363d;
-            border-radius: 12px;
-            padding: 2rem;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-        
-        .interest-card:hover {
-            transform: translateY(-10px);
-            border-color: #4ecdc4;
-            box-shadow: 0 10px 30px rgba(78, 205, 196, 0.2);
-        }
-        
-        .interest-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(78, 205, 196, 0.1), transparent);
-            transition: 0.5s;
-        }
-        
-        .interest-card:hover::before {
-            left: 100%;
-        }
-        
-        .card-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: block;
-        }
-        
-        .japanese { color: #ff6b6b; }
-        .linux { color: #4ecdc4; }
-        .coffee { color: #d4af37; }
-        
-        .card-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: #f0f6fc;
-        }
-        
-        .card-description {
-            color: #8b949e;
-            line-height: 1.6;
-            margin-bottom: 1rem;
-        }
-        
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-        
-        .tech-tag {
-            background: linear-gradient(45deg, #30363d, #21262d);
-            color: #f0f6fc;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            border: 1px solid #4ecdc4;
-            transition: all 0.3s ease;
-        }
-        
-        .tech-tag:hover {
-            background: rgba(78, 205, 196, 0.2);
-            transform: scale(1.05);
-        }
-        
-        .stats-section {
-            background: rgba(33, 38, 45, 0.8);
-            border: 1px solid #30363d;
-            border-radius: 12px;
-            padding: 2rem;
-            margin: 2rem 0;
-            text-align: center;
-        }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        
-        .stat-item {
-            padding: 1rem;
-        }
-        
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #4ecdc4;
-        }
-        
-        .stat-label {
-            color: #8b949e;
-            font-size: 0.9rem;
-        }
-        
-        .terminal {
-            background: #0d1117;
-            border: 1px solid #30363d;
-            border-radius: 8px;
-            padding: 1rem;
-            font-family: 'JetBrains Mono', monospace;
-            margin: 2rem 0;
-            overflow-x: auto;
-        }
-        
-        .terminal-header {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .terminal-btn {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-        
-        .btn-red { background: #ff5f56; }
-        .btn-yellow { background: #ffbd2e; }
-        .btn-green { background: #27ca3f; }
-        
-        .terminal-content {
-            color: #4ecdc4;
-        }
-        
-        .prompt {
-            color: #ff6b6b;
-        }
-        
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-        
-        .contact-link {
-            background: rgba(33, 38, 45, 0.8);
-            border: 1px solid #30363d;
-            color: #f0f6fc;
-            text-decoration: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .contact-link:hover {
-            border-color: #4ecdc4;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(78, 205, 196, 0.2);
-        }
-        
-        .floating-elements {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-        
-        .floating-element {
-            position: absolute;
-            opacity: 0.1;
-            animation: float-random 10s linear infinite;
-        }
-        
-        @keyframes float-random {
-            0% { transform: translateY(100vh) rotate(0deg); }
-            100% { transform: translateY(-100vh) rotate(360deg); }
-        }
-    </style>
-</head>
-<body>
-    <div class="floating-elements">
-        <div class="floating-element" style="left: 10%; animation-delay: -2s; font-size: 2rem;">🍃</div>
-        <div class="floating-element" style="left: 20%; animation-delay: -4s; font-size: 1.5rem;">⚡</div>
-        <div class="floating-element" style="left: 80%; animation-delay: -6s; font-size: 2.5rem;">🐧</div>
-        <div class="floating-element" style="left: 70%; animation-delay: -8s; font-size: 1.8rem;">☕</div>
-        <div class="floating-element" style="left: 40%; animation-delay: -1s; font-size: 2rem;">🌸</div>
-    </div>
+# Hi there! I'm Hann0g 👋
 
-    <div class="container">
-        <header class="header">
-            <div class="profile-img">👨‍💻</div>
-            <h1 class="name">Your Name</h1>
-            <p class="title">Code Craftsman • Linux Enthusiast • Coffee Artist</p>
-            <div class="typing-text">printf("Hello, World! ようこそ");</div>
-        </header>
+<div align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=500&size=24&pause=1000&color=4ECDC4&center=true&vCenter=true&width=600&lines=printf(%22Hello%2C+World!+%E3%82%88%E3%81%86%E3%81%93%E3%81%9D%22)%3B;Code+Craftsman+%E2%80%A2+Linux+Enthusiast;Coffee+Artist+%E2%80%A2+Anime+Lover" alt="Typing SVG" />
+</div>
 
-        <div class="terminal">
-            <div class="terminal-header">
-                <div class="terminal-btn btn-red"></div>
-                <div class="terminal-btn btn-yellow"></div>
-                <div class="terminal-btn btn-green"></div>
-            </div>
-            <div class="terminal-content">
-                <span class="prompt">user@arch</span>:~$ whoami<br>
-                Passionate developer who loves clean code, perfect coffee, and cozy anime moments ☕🌸<br>
-                <span class="prompt">user@arch</span>:~$ ls interests/<br>
-                japanese-culture/  linux-systems/  coffee-brewing/  anime/  open-source/<br>
-                <span class="prompt">user@arch</span>:~$ cat philosophy.txt<br>
-                "Code like poetry, brew like art, live like adventure, chill like anime"
-            </div>
-        </div>
+<div align="center">
+  <img width="150" src="your-anime-avatar.jpg" alt="Hann0g's Avatar" style="border-radius: 50%; border: 3px solid #4ecdc4;"/>
+</div>
 
-        <div class="interests-grid">
-            <div class="interest-card">
-                <span class="card-icon japanese">🎌</span>
-                <h3 class="card-title">Japanese Culture</h3>
-                <p class="card-description">
-                    Fascinated by Japanese aesthetics, philosophy, and technology. 
-                    Learning the language and exploring the beautiful intersection of tradition and innovation.
-                </p>
-                <div class="tech-stack">
-                    <span class="tech-tag">日本語学習</span>
-                    <span class="tech-tag">Anime</span>
-                    <span class="tech-tag">Philosophy</span>
-                    <span class="tech-tag">Design</span>
-                </div>
-            </div>
+<div align="center">
+  <h3>🐧 BTW, I use Arch | ☕ Coffee Artist | 🌸 Japanese Culture Enthusiast</h3>
+</div>
 
-            <div class="interest-card">
-                <span class="card-icon linux">🐧</span>
-                <h3 class="card-title">Arch Linux</h3>
-                <p class="card-description">
-                    BTW, I use Arch! Love the minimalism, control, and philosophy. 
-                    Always tinkering with configs and exploring the depths of the Linux ecosystem.
-                </p>
-                <div class="tech-stack">
-                    <span class="tech-tag">i3wm</span>
-                    <span class="tech-tag">Vim</span>
-                    <span class="tech-tag">Terminal</span>
-                    <span class="tech-tag">Shell Scripting</span>
-                </div>
-            </div>
+---
 
-            <div class="interest-card">
-                <span class="card-icon coffee">☕</span>
-                <h3 class="card-title">Barista Life</h3>
-                <p class="card-description">
-                    Crafting perfect espresso shots and latte art by day. 
-                    The precision and artistry of coffee making mirrors the elegance of clean code.
-                </p>
-                <div class="tech-stack">
-                    <span class="tech-tag">Espresso</span>
-                    <span class="tech-tag">Latte Art</span>
-                    <span class="tech-tag">Pour Over</span>
-                    <span class="tech-tag">Coffee Science</span>
-                </div>
-            </div>
-        </div>
+## 🚀 About Me
 
-        <div class="stats-section">
-            <h3 style="color: #4ecdc4; margin-bottom: 1rem;">⚡ Quick Stats</h3>
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-number">∞</div>
-                    <div class="stat-label">Cups of Coffee</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">24/7</div>
-                    <div class="stat-label">Arch Uptime Goal</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">漢字</div>
-                    <div class="stat-label">Learning Kanji</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">KISS</div>
-                    <div class="stat-label">Code Philosophy</div>
-                </div>
-            </div>
-        </div>
+```bash
+user@arch:~$ whoami
+Passionate developer who loves clean code, perfect coffee, and cozy anime moments ☕🌸
 
-        <div class="contact-links">
-            <a href="#" class="contact-link">
-                <span>📧</span> Email
-            </a>
-            <a href="#" class="contact-link">
-                <span>💼</span> LinkedIn
-            </a>
-            <a href="#" class="contact-link">
-                <span>🌐</span> Portfolio
-            </a>
-            <a href="#" class="contact-link">
-                <span>📱</span> Twitter
-            </a>
-        </div>
+user@arch:~$ ls interests/
+japanese-culture/  linux-systems/  coffee-brewing/  anime/  open-source/
 
-        <div class="terminal" style="text-align: center;">
-            <div class="terminal-content">
-                <span class="prompt">user@arch</span>:~$ fortune<br>
-                "The best code is written with coffee in hand and Arch in heart"<br>
-                <span class="prompt">user@arch</span>:~$ exit<br>
-                Thanks for visiting! がんばって！ ☕🐧🎌
-            </div>
-        </div>
-    </div>
+user@arch:~$ cat philosophy.txt
+"Code like poetry, brew like art, live like adventure, chill like anime"
 
-    <script>
-        // Add some interactive elements
-        document.addEventListener('DOMContentLoaded', function() {
-            // Create more floating elements dynamically
-            const floatingContainer = document.querySelector('.floating-elements');
-            const symbols = ['⚡', '🐧', '☕', '🌸', '🎌', '💻', '🍃'];
-            
-            setInterval(() => {
-                if (document.querySelectorAll('.floating-element').length < 15) {
-                    const element = document.createElement('div');
-                    element.className = 'floating-element';
-                    element.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-                    element.style.left = Math.random() * 100 + '%';
-                    element.style.fontSize = (Math.random() * 2 + 1) + 'rem';
-                    element.style.animationDelay = '-' + Math.random() * 10 + 's';
-                    floatingContainer.appendChild(element);
-                    
-                    setTimeout(() => {
-                        element.remove();
-                    }, 10000);
-                }
-            }, 3000);
-            
-            // Add hover effects to cards
-            document.querySelectorAll('.interest-card').forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.background = 'rgba(78, 205, 196, 0.05)';
-                });
-                
-                card.addEventListener('mouseleave', function() {
-                    this.style.background = 'rgba(33, 38, 45, 0.8)';
-                });
-            });
-        });
-    </script>
-</body>
-</html>
+user@arch:~$ neofetch
+```
+
+<div align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=Hann0g&show_icons=true&theme=dark&bg_color=0d1117&title_color=4ecdc4&icon_color=ff6b6b&text_color=f0f6fc&border_color=30363d" alt="GitHub Stats"/>
+</div>
+
+---
+
+## 🎌 Japanese Culture
+```
+🌸 Learning Japanese language and culture
+📚 Exploring philosophy and aesthetics  
+🎌 Fascinated by tradition meets innovation
+🍃 Finding beauty in simplicity (wabi-sabi)
+```
+
+**Currently Learning:** `日本語学習` • `Kanji Writing` • `Cultural Philosophy`
+
+---
+
+## 🐧 Arch Linux Enthusiast
+```
+⚡ BTW, I use Arch!
+🎯 Minimalism and control philosophy
+🔧 Always tinkering with configs
+📟 Terminal-first workflow
+```
+
+**Tech Stack:**
+```bash
+OS          : Arch Linux
+WM          : i3wm / Sway
+Terminal    : Alacritty
+Shell       : Zsh + Oh My Zsh
+Editor      : Vim / Neovim
+```
+
+<div align="center">
+  <img src="https://skillicons.dev/icons?i=arch,linux,vim,bash,git,docker" />
+</div>
+
+---
+
+## ☕ Barista Life
+```
+🎨 Crafting perfect espresso shots
+☕ Latte art precision
+⚗️  Coffee science enthusiast  
+🏪 The art of hospitality
+```
+
+**Coffee Skills:**
+- `Espresso Extraction` ⭐⭐⭐⭐⭐
+- `Latte Art` ⭐⭐⭐⭐
+- `Pour Over Techniques` ⭐⭐⭐⭐⭐
+- `Coffee Cupping` ⭐⭐⭐
+
+---
+
+## 📊 GitHub Stats
+
+<div align="center">
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Hann0g&layout=compact&theme=dark&bg_color=0d1117&title_color=4ecdc4&text_color=f0f6fc&border_color=30363d" alt="Top Languages"/>
+</div>
+
+<div align="center">
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=Hann0g&theme=dark&background=0d1117&ring=4ecdc4&fire=ff6b6b&currStreakLabel=4ecdc4&border=30363d" alt="GitHub Streak"/>
+</div>
+
+---
+
+## 🛠️ Technologies & Tools
+
+**Languages:**
+<div>
+  <img src="https://skillicons.dev/icons?i=js,python,bash,html,css" />
+</div>
+
+**Frameworks & Libraries:**
+<div>
+  <img src="https://skillicons.dev/icons?i=react,nodejs,express,nginx" />
+</div>
+
+**Databases & Tools:**
+<div>
+  <img src="https://skillicons.dev/icons?i=mongodb,redis,git,docker,vscode" />
+</div>
+
+---
+
+## 🌱 Currently Learning
+- 🔤 **Japanese Language** (Intermediate level)
+- 🏗️ **System Architecture** patterns  
+- ☁️ **Cloud Technologies** (AWS/GCP)
+- 🦀 **Rust Programming** language
+- 📱 **Mobile Development** (React Native)
+
+---
+
+## 📈 Activity Graph
+<div align="center">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=Hann0g&theme=react-dark&bg_color=0d1117&line=4ecdc4&point=ff6b6b&color=f0f6fc&area_color=4ecdc4&area=true" alt="Contribution Graph"/>
+</div>
+
+---
+
+## 🎯 Fun Facts
+- 🍃 I believe good code flows like water (very Zen)
+- ⚡ My uptime goal is 24/7 (both for Arch and myself)
+- 🌸 I can write "Hello World" in 日本語: `こんにちは世界`
+- ☕ Coffee-to-code ratio: ∞:1
+- 🐧 Penguins are my spirit animal
+
+---
+
+## 📫 Connect with Me
+
+<div align="center">
+  <a href="mailto:your.email@domain.com">
+    <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/>
+  </a>
+  <a href="https://linkedin.com/in/yourprofile">
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
+  </a>
+  <a href="https://twitter.com/yourhandle">
+    <img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter"/>
+  </a>
+  <a href="https://yourportfolio.dev">
+    <img src="https://img.shields.io/badge/Portfolio-4ecdc4?style=for-the-badge&logo=About.me&logoColor=white" alt="Portfolio"/>
+  </a>
+</div>
+
+---
+
+## 💝 Support My Work
+
+If you like what I do and want to support my coffee addiction:
+
+<div align="center">
+  <a href="https://ko-fi.com/yourhandle">
+    <img src="https://img.shields.io/badge/Ko--fi-F16061?style=for-the-badge&logo=ko-fi&logoColor=white" alt="Ko-fi"/>
+  </a>
+  <a href="https://buymeacoffee.com/yourhandle">
+    <img src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black" alt="Buy Me A Coffee"/>
+  </a>
+</div>
+
+---
+
+<div align="center">
+  <img src="https://komarev.com/ghpvc/?username=Hann0g&color=4ecdc4&style=flat-square&label=Profile+Views" alt="Profile Views"/>
+</div>
+
+<div align="center">
+  
+```bash
+user@arch:~$ fortune
+"The best code is written with coffee in hand and Arch in heart"
+user@arch:~$ exit
+Thanks for visiting! がんばって！ ☕🐧🎌
+```
+
+</div>
+
+---
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/platane/snk/output/github-contribution-grid-snake-dark.svg" alt="Snake animation" />
+</div>
