@@ -7,7 +7,7 @@
 
 
 <div align="center">
-  <h3>🐧 BTW, I use Arch | ☕ coffee is nice | <h3>
+  <h3>🐧 BTW, I use Arch | ☕ coffee is nice  <h3>
 </div>
 
 ---
